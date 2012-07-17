@@ -158,16 +158,6 @@ class account_invoice_ar_installer(osv.osv_memory):
                     'default_debit_account_id': account_id[data['journal_type']],
                 }
 
-                # If defaults accounts don't have default currency, then currency_id is set
-                #default_credit_account = obj_acc_account.browse(cr, uid, vals_journal['default_credit_account_id'])
-                #default_debit_account  = obj_acc_account.browse(cr, uid, vals_journal['default_debit_account_id'])
-                #default_accounts = [default_credit_account]
-                #if default_credit_account != default_debit_account:
-                #    default_accounts.append(default_debit_account)
-                #for default_account in default_accounts:
-                #    if not default_account.currency_id:
-                #        obj_acc_account.write(cr,uid,[default_account.id], {'currency_id': currency_id}, context=context)
-
                 obj_journal.create(cr, uid, vals_journal, context=context)
 
         pass
