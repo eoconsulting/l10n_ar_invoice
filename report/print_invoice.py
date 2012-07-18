@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).
+#    Author: Mariano Ruiz <mrsarm@gmail.com>,
+#            Enterprise Objects Consulting (<http://www.eoconsulting.com.ar>)
+#    Created: 2012-07-18
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as

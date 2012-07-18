@@ -3,6 +3,10 @@
 #
 #    Copyright (C) 2011-2014  Cristian S. Rocha
 #
+#    Modified: Mariano Ruiz <mrsarm@gmail.com>,
+#              Enterprise Objects Consulting (<http://www.eoconsulting.com.ar>)
+#    Created: 2012-07-18
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -21,9 +25,9 @@
 {
     'name': 'Argentina - Generador de Talonarios',
     'version': '2.0',
-    'author': 'Moldeo Interactive',
+    'author': 'Moldeo Interactive / Enterprise Objects Consulting',
     'category': 'Argentina/Invoices',
-    'website': 'http://www.moldeointeractive.com/',
+    'website': 'http://www.eoconsulting.com.ar/',
     'license': 'GPL-3',
     'description': """
 Generador de Talonarios para la Argentina.
