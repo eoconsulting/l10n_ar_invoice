@@ -1480,8 +1480,14 @@ msgstr "Límite de pago"
 #: field:account.move.line,invoice:0
 #: model:ir.model,name:account.model_account_invoice
 #: model:res.request.link,name:account.req_link_invoice
+#: model:ir.actions.report.xml,name:account.account_invoices
 msgid "Invoice"
 msgstr "Factura"
+
+#. module: l10n_ar_invoice
+#: model:ir.actions.report.xml,name:account.account_invoices_with_header
+msgid "Invoices with Header"
+msgstr "Factura con Encabezado"
 
 #. module: account
 #: model:process.node,note:account.process_node_analytic0
