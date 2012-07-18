@@ -9,24 +9,32 @@
         xshowBoundary="1">
 
     <pageTemplate id="first">
+      <!-- Invoice Type -->
+      <frame id="invoice_type"        x1="10.000cm"  y1="26.000cm"    width="12.3cm" height="2.5cm"/>
+      <!-- Header -->
+      <frame id="observ"              x1="12.000cm"  y1="25.600cm"    width="12.3cm" height="2.5cm"/>
       <!-- date -->
-      <frame id="date_label"          x1="12.500cm" y1="27.000cm" width="4.5cm"  height="1.0cm"/>
-      <frame id="date"                x1="17.000cm" y1="27.000cm" width="3.0cm"  height="1.0cm"/>
+      <frame id="date_label"          x1="10.500cm" y1="25.500cm" width="4.5cm"  height="1.0cm"/>
+      <frame id="date"                x1="15.000cm" y1="25.500cm" width="3.0cm"  height="1.0cm"/>
       <!-- info -->
-      <frame id="info"                x1="12.500cm" y1="25.000cm" width="7.5cm"  height="2.0cm"/>
+      <frame id="info"                x1="12.500cm" y1="23.500cm" width="7.5cm"  height="2.0cm"/>
       <!-- header -->
-      <frame id="partner_label"       x1="1.700cm"  y1="21.000cm" width="8.5cm"  height="4.0cm"/>
-      <frame id="partner"             x1="10.200cm" y1="21.000cm" width="9.8cm"  height="4.0cm"/>
+      <frame id="partner_label"       x1="1.700cm"  y1="19.500cm" width="8.5cm"  height="4.0cm"/>
+      <frame id="partner"             x1="10.200cm" y1="19.500cm" width="9.8cm"  height="4.0cm"/>
       <!-- invoice notes -->
-      <frame id="note"                x1="1.700cm"  y1="18.500cm" width="18.3cm" height="2.5cm"/>
+      <frame id="note"                x1="1.700cm"  y1="16.500cm" width="18.3cm" height="2.5cm"/>
       <!-- body -->
-      <frame id="details"             x1="1.700cm"  y1="6.0cm"    width="18.3cm" height="12.5cm"/>
+      <frame id="details"             x1="1.700cm"  y1="3.500cm"    width="18.3cm" height="12.5cm"/>
       <!-- footer -->
-      <frame id="observ"              x1="1.700cm"  y1="2.5cm"    width="12.3cm" height="3.5cm"/>
-      <frame id="calc_label"          x1="14.000cm" y1="2.5cm"    width="6.0cm"  height="3.5cm"/>
+      <frame id="calc_label"          x1="14.000cm" y1="2.500cm"    width="6.0cm"  height="3.5cm"/>
     </pageTemplate>
   </template>
   <stylesheet>
+      <paraStyle name='invoice-type'
+          fontName='Helvetica-Bold'
+          fontSize='32'
+          spaceBefore='0'
+          />
       <paraStyle name='big'
           fontName='Helvetica'
           fontSize='16'
@@ -55,13 +63,6 @@
           />
       <paraStyle name='tiny'
           fontName='Helvetica'
-          fontSize='8'
-          leftIndent='0cm'
-          spaceAfter='0cm'
-          spaceBefore='0cm'
-          />
-      <paraStyle name='tiny-bold'
-          fontName='Helvetica-Bold'
           fontSize='8'
           leftIndent='0cm'
           spaceAfter='0cm'
@@ -112,13 +113,22 @@
   <story>
     <para>[[ repeatIn(objects,'o') ]]</para>
     <para>[[ setLang(o.partner_id.lang) ]] </para>
+      <para style="invoice-type">[[ ((use_header and o.journal_id.code[0] in ['F']) or removeParentNode('para')) and '']] [[ o.journal_id.code[2] ]]</para>
+      <nextFrame/>
+      <para style="body-bold">FACTURA N° [[ ((use_header and o.journal_id.code[0] in ['F'] and o.number) or removeParentNode('para')) and '']] [[ o.number ]]</para>
+      <para style="body-bold">NOTA DE CREDITO [[ ((use_header and o.journal_id.code[0] in ['C']) or removeParentNode('para')) and '']] [[ o.number ]]</para>
+      <para style="body-bold">NOTA DE DEBITO [[ ((use_header and o.journal_id.code[0] in ['D']) or removeParentNode('para')) and '']] [[ o.number ]]</para>
+      <para style="body-bold">PRO-FORMA [[ ((use_header and o.type == 'out_invoice' and o.state == 'proforma2') or removeParentNode('para')) and '' ]]</para>
+      <para style="body-bold">FACTURA PRELIMINAR [[ ((use_header and o.type == 'out_invoice' and o.state == 'draft') or removeParentNode('para')) and '' ]]</para>
+      <para style="body-bold">FACTURA CANCELADA [[ ((use_header and o.type == 'out_invoice' and o.state == 'cancel') or removeParentNode('para')) and '' ]]</para>
+      <nextFrame/>
       <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Fecha:' or '' ]]</para>
       <nextFrame/>
       <para style='body-bold' alignment='LEFT'>[[ formatLang(o.date_invoice,date=True) ]]</para>
       <nextFrame/>
-      <para style='tiny'>.</para>
-      <para style='tiny'>.</para>
-      <para style='tiny'>.</para>
+      <para style='tiny'> </para>
+      <para style='tiny'> </para>
+      <para style='tiny'> </para>
       <nextFrame/>
       <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'CUIT:' or '' ]]</para>
       <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Señor/es:' or '' ]]</para>
@@ -186,14 +196,6 @@
             </tr>
           </blockTable>
         </section>
-      <nextFrame/>
-    <para style="tiny-bold">Información de Facturación</para>
-    <para style="tiny">Factura [[ ((o.journal_id.code[0] in ['F']) or removeParentNode('para')) and '']] [[ o.number ]]</para>
-    <para style="tiny">Nota de Crédito [[ ((o.journal_id.code[0] in ['C']) or removeParentNode('para')) and '']] [[ o.number ]]</para>
-    <para style="tiny">Nota de Débito [[ ((o.journal_id.code[0] in ['D']) or removeParentNode('para')) and '']] [[ o.number ]]</para>
-    <para style="tiny">PRO-FORMA [[ ((o.type == 'out_invoice' and o.state == 'proforma2') or removeParentNode('para')) and '' ]]</para>
-    <para style="tiny">Factura Preliminar [[ ((o.type == 'out_invoice' and o.state == 'draft') or removeParentNode('para')) and '' ]]</para>
-    <para style="tiny">Factura Cancelada [[ ((o.type == 'out_invoice' and o.state == 'cancel') or removeParentNode('para')) and '' ]]</para>
       <nextFrame/>
     <blockTable colWidths="2cm,2cm" style="Total">
       <tr>[[ ((o.journal_id.code[2] in ['A']) or removeParentNode('tr')) and '']]
