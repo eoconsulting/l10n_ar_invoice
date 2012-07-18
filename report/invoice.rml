@@ -5,9 +5,9 @@
         author="Cristian S. Rocha / Mariano Ruiz (Enterprise Objects Consulting)"
         allowSplitting="0"
         topMargin="0"
-    bottomMargin="0"
-    xshowBoundary="1"
-        >
+        bottomMargin="0"
+        xshowBoundary="1">
+
     <pageTemplate id="first">
       <!-- date -->
       <frame id="date_label"          x1="12.500cm" y1="27.000cm" width="4.5cm"  height="1.0cm"/>
@@ -124,9 +124,9 @@
       <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Señor/es:' or '' ]]</para>
       <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Domicilio:' or '' ]]</para>
       <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Localidad:' or '' ]]</para>
-      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Condición Frente al IVA:' or '' ]]</para>
+      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'IVA:' or '' ]]</para>
       <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Condición de Venta:' or '' ]]</para>
-      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Nro. de Remito:' or '' ]]</para>
+      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Remito Nro.:' or '' ]]</para>
       <nextFrame/>
       <para style='body'>[[ o.partner_id.vat[2:] or removeParentNode('para') ]]</para>
       <para style='body'>[[ o.partner_id.title.name or '' ]] [[ o.partner_id.name ]]</para>
@@ -208,6 +208,6 @@
         <td>[[ (use_header) and 'Total:' or '' ]]</td>
         <td>$ [[ formatLang(o.amount_total) ]]</td>
       </tr>
-        </blockTable>
-    </story>
+    </blockTable>
+  </story>
 </document>
