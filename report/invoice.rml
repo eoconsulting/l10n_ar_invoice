@@ -11,33 +11,46 @@
     <pageTemplate id="first">
       <pageGraphics>
         <lineMode width="1"/>
-        <lines>1.5cm 6.0cm 19.5cm 6.0cm [[ ((use_header) or removeParentNode('lines')) ]]</lines>
+        <lines>1.5cm 6.0cm 19.5cm 6.0cm 1.5cm 24.4cm 19.5cm 24.4cm  [[ ((use_header) or removeParentNode('lines')) ]]</lines>
         <rect x="1.5cm" y="1.5cm" width="18.0cm" height="26.7cm" fill="no" stroke="yes" />[[ ((use_header) or removeParentNode('rect')) ]]
         <setFont name="Helvetica-Bold" size="12"/>
-        <drawCentredString x="5.5cm" y="27.5cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.name ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="27.0cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.name ]]</drawCentredString>
         <setFont name="Helvetica" size="7"/>
-        <drawCentredString x="5.5cm" y="27.0cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.street ]]</drawCentredString>
-        <drawCentredString x="5.5cm" y="26.7cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]([[ company.zip ]]) [[ company.city ]]</drawCentredString>
-        <drawCentredString x="5.5cm" y="26.4cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]Tel. [[ company.phone ]]</drawCentredString>
-        <drawCentredString x="5.5cm" y="26.1cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.website ]]</drawCentredString>
-        <drawCentredString x="5.5cm" y="25.8cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]I.V.A. RESPONSABLE INSCRIPTO</drawCentredString>
+        <drawCentredString x="5.5cm" y="26.5cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.street ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="26.2cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]([[ company.zip ]]) [[ company.city ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="25.9cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]Tel. [[ company.phone ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="25.6cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.website ]]</drawCentredString>
+        <setFont name="Helvetica" size="9"/>
+        <drawCentredString x="5.5cm" y="25.0cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]I.V.A. RESPONSABLE INSCRIPTO</drawCentredString>
       </pageGraphics>
       <!-- Invoice Type -->
-      <frame id="invoice_type"        x1="9.1000cm"  y1="26.000cm"   width="2cm" height="2.5cm"/>
+      <frame id="invoice_type"        x1="9.1000cm"  y1="25.800cm"   width="2cm"    height="2.5cm"/>
       <!-- Header -->
       <frame id="fac_num"             x1="12.000cm"  y1="25.600cm"   width="12.3cm" height="2cm"/>
       <!-- date -->
-      <frame id="date_label"          x1="9.100cm" y1="26.000cm"     width="4.5cm"  height="1.0cm"/>
-      <frame id="date"                x1="13.500cm" y1="26.000cm"    width="3.0cm"  height="1.0cm"/>
+      <frame id="date_label"          x1="9.100cm"   y1="26.100cm"   width="4.5cm"  height="1.0cm"/>
+      <frame id="date"                x1="13.500cm"  y1="26.100cm"   width="3.0cm"  height="1.0cm"/>
       <!-- info -->
-      <frame id="info"                x1="12.500cm" y1="23.500cm"    width="7.5cm"  height="2.0cm"/>
+      <frame id="company_tax_ids"     x1="12.500cm"  y1="24.000cm"   width="7.5cm"  height="2.0cm"/>
       <!-- header -->
-      <frame id="partner_label"       x1="1.700cm"  y1="21.000cm"    width="8.5cm"  height="4.0cm"/>
-      <frame id="partner"             x1="10.200cm" y1="21.000cm"    width="9.8cm"  height="4.0cm"/>
+      <frame id="partner_label"       x1="2.200cm"   y1="22.000cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="partner"             x1="4.200cm"   y1="22.000cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="address_label"       x1="2.200cm"   y1="21.400cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="address"             x1="4.200cm"   y1="21.400cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="city_label"          x1="10.200cm"  y1="21.400cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="city"                x1="12.300cm"  y1="21.400cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="vat_subjected_label" x1="2.200cm"   y1="20.900cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="vat_subjected"       x1="4.200cm"   y1="20.900cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="vat_label"           x1="10.200cm"  y1="20.900cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="vat"                 x1="12.300cm"  y1="20.900cm"   width="4.8cm"  height="2.0cm"/>
+      <frame id="payment_term_label"  x1="2.200cm"   y1="20.400cm"   width="6.8cm"  height="2.0cm"/>
+      <frame id="payment_term"        x1="6.200cm"   y1="20.400cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="origin_label"        x1="10.200cm"  y1="20.400cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="origin"              x1="12.300cm"  y1="20.400cm"   width="4.8cm"  height="2.0cm"/>
       <!-- body -->
-      <frame id="details"             x1="1.500cm"  y1="8.500cm"     width="18.0cm" height="12.5cm"/>
+      <frame id="details"             x1="1.500cm"   y1="8.900cm"    width="18.0cm" height="12.5cm"/>
       <!-- footer -->
-      <frame id="calc_label"          x1="14.000cm" y1="2.500cm"     width="6.0cm"  height="3.5cm"/>
+      <frame id="calc_label"          x1="14.000cm"  y1="2.500cm"    width="6.0cm"  height="3.5cm"/>
     </pageTemplate>
   </template>
   <stylesheet>
@@ -145,21 +158,33 @@
       <para style='tiny'> </para>
       <para style='tiny'> </para>
       <nextFrame/>
-      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'CUIT:' or '' ]]</para>
-      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Señor/es:' or '' ]]</para>
-      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Domicilio:' or '' ]]</para>
-      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Localidad:' or '' ]]</para>
-      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'IVA:' or '' ]]</para>
-      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Condición de Venta:' or '' ]]</para>
-      <para style='body-bold' alignment='RIGHT'>[[ (use_header) and 'Remito Nro.:' or '' ]]</para>
+      <para style='body-bold'>[[ (use_header) and 'Señor/es:' or '' ]]</para>
       <nextFrame/>
-      <para style='body'>[[ o.partner_id.vat or '-' ]]</para>
       <para style='body'>[[ o.partner_id.title.name or '' ]] [[ o.partner_id.name ]]</para>
-      <para style='body'>[[ o.address_invoice_id.street ]], ([[ o.address_invoice_id.zip or '----' ]])</para>
-      <para style='body'>[[ o.address_invoice_id.city or '']], [[ o.address_invoice_id.state_id.name or '' ]], [[ o.address_invoice_id.country_id.name or '' ]].</para>
+      <nextFrame/>
+      <para style='body-bold'>[[ (use_header) and 'Domicilio:' or '' ]]</para>
+      <nextFrame/>
+      <para style='body'>[[ o.address_invoice_id.street ]]</para>
+      <nextFrame/>
+      <para style='body-bold'>[[ (use_header) and 'Localidad:' or '' ]]</para>
+      <nextFrame/>
+      <para style='body'>[[ (o.address_invoice_id.zip) and '(' + o.address_invoice_id.zip + ') ' or '' ]][[ o.address_invoice_id.city or '']][[ ', ' + o.address_invoice_id.state_id.name or '' ]][[ (o.address_invoice_id.country_id.code !='AR') and ', ' + o.address_invoice_id.country_id.name or '' ]]</para>
+      <nextFrame/>
+      <para style='body-bold'>[[ (use_header) and 'I.V.A.:' or '' ]]</para>
+      <nextFrame/>
       <para style='body'>Responsable [[ (not o.partner_id.vat_subjected) and removeParentNode('para') ]] [[ o.partner_id.property_account_position.name or '' ]]</para>
       <para style='body'>No Responsable [[ o.partner_id.vat_subjected and removeParentNode('para') ]] [[ o.partner_id.property_account_position.name or '' ]]</para>
+      <nextFrame/>
+      <para style='body-bold'>[[ (use_header) and 'C.U.I.T.:' or '' ]]</para>
+      <nextFrame/>
+      <para style='body'>[[ o.partner_id.vat or '-' ]]</para>
+      <nextFrame/>
+      <para style='body-bold'>[[ (use_header) and 'Condición de Venta:' or '' ]]</para>
+      <nextFrame/>
       <para style='body'>[[ o.payment_term.name or 'Sin definir' ]]</para>
+      <nextFrame/>
+      <para style='body-bold'>[[ (use_header) and 'Remito Nº:' or '' ]]</para>
+      <nextFrame/>
       <para style='body'>[[ o.origin or '---' ]]</para>
       <nextFrame/>
         <section>
