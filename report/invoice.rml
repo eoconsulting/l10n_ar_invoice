@@ -177,7 +177,7 @@
       <nextFrame/>
       <para style='body-bold'>[[ (use_header) and 'C.U.I.T.:' or '' ]]</para>
       <nextFrame/>
-      <para style='body'>[[ o.partner_id.vat or '-' ]]</para>
+      <para style='body'>[[ vat or '-' ]]</para>
       <nextFrame/>
       <para style='body-bold'>[[ (use_header) and 'Condición de Venta:' or '' ]]</para>
       <nextFrame/>
