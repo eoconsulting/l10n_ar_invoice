@@ -11,47 +11,46 @@
     <pageTemplate id="first">
       <pageGraphics>
         <lineMode width="1"/>
-        <lines>1.5cm 5.3cm 19.5cm 5.3cm 1.5cm 23.5cm 19.5cm 23.5cm  [[ ((use_header) or removeParentNode('lines')) ]]</lines>
+        <lines>1.5cm 6.0cm 19.5cm 6.0cm 1.5cm 24.4cm 19.5cm 24.4cm  [[ ((use_header) or removeParentNode('lines')) ]]</lines>
         <rect x="1.5cm" y="3cm" width="18.0cm" height="25.2cm" fill="no" stroke="yes" />[[ ((use_header) or removeParentNode('rect')) ]]
-        <setFont name="Helvetica-Bold" size="9"/>
-        <drawCentredString x="5.5cm" y="25.6cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.name ]]</drawCentredString>
+        <setFont name="Helvetica-Bold" size="12"/>
+        <drawCentredString x="5.5cm" y="27.2cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.name ]]</drawCentredString>
         <setFont name="Helvetica" size="7"/>
-        <drawCentredString x="5.5cm" y="25.3cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.street ]]</drawCentredString>
-        <drawCentredString x="5.5cm" y="25.0cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]([[ company.zip ]]) [[ company.city ]]</drawCentredString>
-        <drawCentredString x="5.5cm" y="24.7cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]Tel. [[ company.phone ]]</drawCentredString>
-        <drawCentredString x="5.5cm" y="24.4cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.website ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="26.5cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.street ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="26.2cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]([[ company.zip ]]) [[ company.city ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="25.9cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]Tel. [[ company.phone ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="25.6cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.website ]]</drawCentredString>
         <setFont name="Helvetica" size="9"/>
-        <drawCentredString x="5.5cm" y="23.8cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.situation_descrip ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="25.0cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.situation_descrip ]]</drawCentredString>
       </pageGraphics>
       <!-- Invoice Type -->
       <frame id="invoice_type"        x1="9.3000cm"  y1="25.800cm"   width="2cm"    height="2.5cm"/>
       <!-- Header -->
       <frame id="fac_num"             x1="12.000cm"  y1="25.600cm"   width="12.3cm" height="2cm"/>
       <!-- date -->
-      <frame id="date_label"          x1="9.100cm"   y1="25.500cm"   width="4.5cm"  height="1.0cm"/>
-      <frame id="date"                x1="13.500cm"  y1="25.500cm"   width="3.0cm"  height="1.0cm"/>
+      <frame id="date_label"          x1="9.100cm"   y1="26.100cm"   width="4.5cm"  height="1.0cm"/>
+      <frame id="date"                x1="13.500cm"  y1="26.100cm"   width="3.0cm"  height="1.0cm"/>
       <!-- info -->
-      <frame id="company_tax_ids"     x1="12.000cm"  y1="23.700cm"    width="7.5cm"  height="2.0cm"/>
+      <frame id="company_tax_ids"     x1="12.000cm"  y1="24.200cm"    width="7.5cm"  height="2.0cm"/>
       <!-- header -->
-      <frame id="partner_label"       x1="2.200cm"   y1="21.200cm"   width="3.8cm"  height="2.0cm"/>
-      <frame id="partner"             x1="4.200cm"   y1="21.200cm"   width="9.8cm"  height="2.0cm"/>
-      <frame id="address_label"       x1="2.200cm"   y1="20.200cm"   width="3.8cm"  height="2.0cm"/>
-      <frame id="address"             x1="4.200cm"   y1="20.200cm"   width="9.8cm"  height="2.0cm"/>
-      <frame id="city_label"          x1="10.200cm"  y1="20.200cm"   width="3.8cm"  height="2.0cm"/>
-      <frame id="city"                x1="12.300cm"  y1="20.200cm"   width="9.8cm"  height="2.0cm"/>
-      <frame id="vat_subjected_label" x1="2.200cm"   y1="19.300cm"   width="3.8cm"  height="2.0cm"/>
-      <frame id="vat_subjected"       x1="4.200cm"   y1="19.300cm"   width="9.8cm"  height="2.0cm"/>
-      <frame id="vat_label"           x1="10.200cm"  y1="19.300cm"   width="3.8cm"  height="2.0cm"/>
-      <frame id="vat"                 x1="12.300cm"  y1="19.300cm"   width="4.8cm"  height="2.0cm"/>
-      <frame id="payment_term_label"  x1="2.200cm"   y1="18.400cm"   width="6.8cm"  height="2.0cm"/>
-      <frame id="payment_term"        x1="6.200cm"   y1="18.400cm"   width="9.8cm"  height="2.0cm"/>
-      <frame id="origin_label"        x1="10.200cm"  y1="18.400cm"   width="3.8cm"  height="2.0cm"/>
-      <frame id="origin"              x1="12.300cm"  y1="18.400cm"   width="4.8cm"  height="2.0cm"/>
+      <frame id="partner_label"       x1="2.200cm"   y1="22.000cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="partner"             x1="4.200cm"   y1="22.000cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="address_label"       x1="2.200cm"   y1="21.400cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="address"             x1="4.200cm"   y1="21.400cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="city_label"          x1="10.200cm"  y1="21.400cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="city"                x1="12.300cm"  y1="21.400cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="vat_subjected_label" x1="2.200cm"   y1="20.900cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="vat_subjected"       x1="4.200cm"   y1="20.900cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="vat_label"           x1="10.200cm"  y1="20.900cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="vat"                 x1="12.300cm"  y1="20.900cm"   width="4.8cm"  height="2.0cm"/>
+      <frame id="payment_term_label"  x1="2.200cm"   y1="20.400cm"   width="6.8cm"  height="2.0cm"/>
+      <frame id="payment_term"        x1="6.200cm"   y1="20.400cm"   width="9.8cm"  height="2.0cm"/>
+      <frame id="origin_label"        x1="10.200cm"  y1="20.400cm"   width="3.8cm"  height="2.0cm"/>
+      <frame id="origin"              x1="12.300cm"  y1="20.400cm"   width="4.8cm"  height="2.0cm"/>
       <!-- body -->
-      <frame id="details"             x1="1.500cm"   y1="7.000cm"    width="18.0cm" height="12.5cm"/>
+      <frame id="details"             x1="1.500cm"   y1="8.800cm"    width="18.0cm" height="12.5cm"/>
       <!-- footer -->
-      <frame id="calc_label"          x1="14.000cm"  y1="1.800cm"    width="6.0cm"  height="3.5cm"/>
-      <frame id="logo"                x1="1.2000cm"  y1="24.800cm"   width="246.0"  height="92.0"/>
+      <frame id="calc_label"          x1="14.000cm"  y1="2.500cm"    width="6.0cm"  height="3.5cm"/>
     </pageTemplate>
   </template>
   <stylesheet>
@@ -249,6 +248,5 @@
         <td>$ [[ formatLang(o.amount_total) ]]</td>
       </tr>
     </blockTable>
-    <para>[[ use_header and company.logo and setTag('para','image', {'width':'123.0','height':'46.0'}) ]][[ (use_header) and company.logo ]]</para>
   </story>
 </document>
