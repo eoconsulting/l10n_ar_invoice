@@ -48,6 +48,8 @@ class account_invoice_ar_installer(osv.osv_memory):
         'do_export': fields.boolean('Realiza o realizará operaciones de Exportación', required=True),
         'remove_old_journals': fields.boolean('Eliminar los diarios existentes', required=True, help='Si es su primera instalación indique que necesita borrar los diarios existentes. Si agrega un nuevo punto de ventas indique que no va a eliminar los journals.'),
         'point_of_sale': fields.integer('Número de Punto de Venta', help='Este es el número que aparecerá como prefijo del número de la factura. Si solo tiene un solo talonario ese número es 1. Si necesita agregar un nuevo punto de venta debe acceder a opciones Administración/Configuración/Wizards de Configuración/Wizards de Configuración y ejecutar nuevamente el wizard de "Configuración de Facturación".'),
+        'ing_brutos': fields.char('Ingresos Brutos', size=32, help="ID o descripción de estado en Ingresos Brutos."),
+        'startup_activities': fields.date('Inicio de Actividades'),
     }
 
     _defaults= {
@@ -57,7 +59,7 @@ class account_invoice_ar_installer(osv.osv_memory):
         'point_of_sale': 1,
     }
 
-    def generate_invoice_journals(self, cr, uid, ids, situation, export, remove_old_journals, point_of_sale, context=None):
+    def generate_invoice_journals(self, cr, uid, ids, situation, ing_brutos, startup_activities, export, remove_old_journals, point_of_sale, context=None):
         """
         Generate Sequences and Journals associated to Invoices Types
         """
@@ -72,6 +74,7 @@ class account_invoice_ar_installer(osv.osv_memory):
         obj_mod = self.pool.get('ir.model.data')
         obj_property = self.pool.get('ir.property')
         obj_user = self.pool.get('res.users')
+        obj_company = self.pool.get('res.company')
 
         # Remove Sale Journal, Purchase Journal, Sale Refund Journal, Purchase Refund Journal.
         if remove_old_journals:
@@ -80,6 +83,12 @@ class account_invoice_ar_installer(osv.osv_memory):
 
         # Create Journals for Argentinian Invoices.
         company_id = obj_user.browse(cr, uid, uid).company_id
+
+        obj_company.write(cr, uid, [company_id.id], {
+                'situation': situation,
+                'ing_brutos': ing_brutos,
+                'startup_activities': startup_activities,
+            })
 
         def get_property(p):
             property_id = obj_property.search(cr, uid, [('name','=',p),('company_id','=',company_id.id)])
@@ -171,6 +180,8 @@ class account_invoice_ar_installer(osv.osv_memory):
         for res in self.read(cr, uid, ids, context=context):
             self.generate_invoice_journals(cr, uid, ids,
                                            record.situation,
+                                           record.ing_brutos,
+                                           record.startup_activities,
                                            record.do_export,
                                            record.remove_old_journals,
                                            record.point_of_sale,

@@ -24,6 +24,8 @@
                     </xpath>
 		    <group colspan="8">
 			    <field name="situation"/><newline/>
+			    <field name="ing_brutos"/><newline/>
+			    <field name="startup_activities"/><newline/>
 			    <field name="do_export"/><newline/>
 			    <field name="remove_old_journals"/><newline/>
 			    <field name="point_of_sale"/>

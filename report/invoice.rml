@@ -21,7 +21,7 @@
         <drawCentredString x="5.5cm" y="25.9cm">[[ ((use_header) or removeParentNode('drawCentredString')) and '' ]]Tel. [[ company.phone ]]</drawCentredString>
         <drawCentredString x="5.5cm" y="25.6cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.website ]]</drawCentredString>
         <setFont name="Helvetica" size="9"/>
-        <drawCentredString x="5.5cm" y="25.0cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.iva_condicion_descrip ]]</drawCentredString>
+        <drawCentredString x="5.5cm" y="25.0cm">[[ ((use_header) or removeParentNode('drawCentredString')) and company.situation_descrip ]]</drawCentredString>
       </pageGraphics>
       <!-- Invoice Type -->
       <frame id="invoice_type"        x1="9.1000cm"  y1="25.800cm"   width="2cm"    height="2.5cm"/>
@@ -156,7 +156,7 @@
       <nextFrame/>
       <para style='tiny'>[[ (use_header and company_vat) and 'C.U.I.T.: ' + company_vat ]]</para>
       <para style='tiny'>[[ (use_header and company.ing_brutos) and 'ING. BRUTOS: ' + company.ing_brutos ]]</para>
-      <para style='tiny'>[[ (use_header and company.inicio_actividades) and 'INICIO ACTIVIDADES: ' + formatLang(company.inicio_actividades,date=True) ]]</para>
+      <para style='tiny'>[[ (use_header and company.startup_activities) and 'INICIO ACTIVIDADES: ' + formatLang(company.startup_activities,date=True) ]]</para>
       <nextFrame/>
       <para style='body-bold'>[[ (use_header) and 'Señor/es:' or '' ]]</para>
       <nextFrame/>

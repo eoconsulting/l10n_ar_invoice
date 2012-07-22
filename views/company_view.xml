@@ -11,8 +11,8 @@
                 <page string="Configuration" position="inside">
                     <separator string="Información fiscal" colspan="4"/>
                     <field name="ing_brutos"/>
-	                <field name="inicio_actividades"/>
-	                <field name="iva_condicion"/>
+	                <field name="startup_activities"/>
+	                <field name="situation"/>
                 </page>
             </field>
         </record>

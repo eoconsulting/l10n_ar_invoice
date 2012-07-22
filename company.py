@@ -30,26 +30,26 @@ class company(osv.osv):
 
     _inherit = 'res.company'
 
-    _iva_condiciones = [
-            ('resp','I.V.A. Responsable Inscripto'),
-            ('no_resp','I.V.A. Responsable No Inscripto'),
-            ('no_resp','No Responsable I.V.A.'),
-            ('monotrib','Responsable Monotributo') ]
+    _situation = [
+            ('responsableinscripto','I.V.A. Responsable Inscripto'),
+            ('noresponsableinscripto','I.V.A. Responsable No Inscripto'),
+            ('noresponsableiva','No Responsable I.V.A.'),
+            ('monotributo','Responsable Monotributo') ]
 
-    def _get_iva_descrip(self, cr, uid, ids, field_name, arg, context=None):
+    def _get_situation_descrip(self, cr, uid, ids, field_name, arg, context=None):
         result = {}
         for company in self.browse(cr, uid, ids, context=context):
-            for cond in self._iva_condiciones:
-                if cond[0] == company.iva_condicion:
+            for cond in self._situation:
+                if cond[0] == company.situation:
                     result[company.id] = {}
                     result[company.id] = cond[1]
         return result
 
     _columns = {
-        'ing_brutos': fields.char('Ingresos Brutos', size=32, help="ID o descripción de estado en Ingresos Brutos (Argentina)."),
-        'inicio_actividades': fields.date('Inicio de actividades'),
-        'iva_condicion': fields.selection(_iva_condiciones, 'Condición IVA'),
-        'iva_condicion_descrip': fields.function(_get_iva_descrip, type='char', readonly=True, method=True),
+        'ing_brutos': fields.char('Ingresos Brutos', size=32, help="ID o descripción de estado en Ingresos Brutos (Argentina solamente)."),
+        'startup_activities': fields.date('Startup Activities'),
+        'situation': fields.selection(_situation, 'VAT Situation'),
+        'situation_descrip': fields.function(_get_situation_descrip, type='char', readonly=True, method=True),
     }
 
 company()
