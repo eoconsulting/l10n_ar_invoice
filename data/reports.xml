@@ -10,7 +10,7 @@
 			rml="l10n_ar_invoice/report/invoice.rml"
 			string="Invoice"
 			header="False"
-			attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/',''))"
+			attachment="(object.state in ('open','paid')) and ('FC'+(object.number or '').replace('/',''))"
 			attachment_use="0"/>
 
 	    <report
@@ -21,7 +21,7 @@
 			rml="l10n_ar_invoice/report/invoice.rml"
 			string="Invoices with Header"
 			header="False"
-			attachment="(object.state in ('open','paid')) and ('DOC'+(object.number or '').replace('/',''))"
+			attachment="(object.state in ('open','paid')) and ('FC_BORRADOR'+(object.number or '').replace('/',''))"
 			attachment_use="0"/>
 
 	</data>

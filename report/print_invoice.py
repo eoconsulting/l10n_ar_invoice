@@ -35,15 +35,23 @@ def format_vat_ar(vat):
         return "%s-%s-%s" % (vat[2:4], vat[4:12], vat[12:])
     return vat
 
-class ar_account_invoice(report_sxw.rml_parse):
+
+class ar_account_invoice_base(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context):
-        super(ar_account_invoice, self).__init__(cr, uid, name, context=context)
+        super(ar_account_invoice_base, self).__init__(cr, uid, name, context=context)
         vat = self.pool.get('res.partner').browse(cr, uid, context['partner_id']).vat
+        company_vat = self.pool.get('res.company').browse(cr, uid, context['company_id']).partner_id.vat
         self.localcontext.update({
             'time': time,
-            'use_header': False,
+            'use_header': self.use_header,
             'vat': format_vat_ar(vat),
+            'company_vat': format_vat_ar(company_vat),
         })
+
+
+class ar_account_invoice(ar_account_invoice_base):
+    use_header = False
+
 report_sxw.report_sxw(
     'report.ar.account.invoice',
     'account.invoice',
@@ -51,15 +59,9 @@ report_sxw.report_sxw(
     parser=ar_account_invoice
 )
 
-class ar_account_invoice_with_header(report_sxw.rml_parse):
-    def __init__(self, cr, uid, name, context):
-        super(ar_account_invoice_with_header, self).__init__(cr, uid, name, context=context)
-        vat = self.pool.get('res.partner').browse(cr, uid, context['partner_id']).vat
-        self.localcontext.update({
-            'time': time,
-            'use_header': True,
-            'vat': format_vat_ar(vat),
-        })
+class ar_account_invoice_with_header(ar_account_invoice_base):
+    use_header = True
+
 report_sxw.report_sxw(
     'report.ar.account.invoice.with.header',
     'account.invoice',
