@@ -51,7 +51,7 @@
       <frame id="details"             x1="1.500cm"   y1="7.000cm"    width="18.0cm" height="12.5cm"/>
       <!-- footer -->
       <frame id="calc_label"          x1="14.000cm"  y1="1.800cm"    width="6.0cm"  height="3.5cm"/>
-      <frame id="logo"                x1="1.2000cm"  y1="24.800cm"   width="246.0"  height="92.0"/>
+      <frame id="logo"                x1="1.800cm"   y1="21.900cm"   width="200.0"  height="182.0"/> <!-- Real image size -->
     </pageTemplate>
   </template>
   <stylesheet>
@@ -249,6 +249,6 @@
         <td>$ [[ formatLang(o.amount_total) ]]</td>
       </tr>
     </blockTable>
-    <para>[[ use_header and company.logo and setTag('para','image', {'width':'123.0','height':'46.0'}) ]][[ (use_header) and company.logo ]]</para>
+    <para>[[ use_header and company.logo and setTag('para','image', {'width':'67.0','height':'61.0'}) ]][[ (use_header) and company.logo ]] <!-- Report image size --></para>
   </story>
 </document>
