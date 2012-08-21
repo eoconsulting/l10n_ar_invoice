@@ -10,6 +10,7 @@
 
     <pageTemplate id="first">
       <pageGraphics>
+        <image x="4.400cm" y="25.900cm" width="64.0" height="64.0">[[((use_header) or removeParentNode('image')) and company.logo]]</image>
         <lineMode width="1"/>
         <lines>1.5cm 5.3cm 19.5cm 5.3cm 1.5cm 23.5cm 19.5cm 23.5cm  [[ ((use_header) or removeParentNode('lines')) ]]</lines>
         <rect x="1.5cm" y="3cm" width="18.0cm" height="25.2cm" fill="no" stroke="yes" />[[ ((use_header) or removeParentNode('rect')) ]]
@@ -51,7 +52,6 @@
       <frame id="details"             x1="1.500cm"   y1="7.000cm"    width="18.0cm" height="12.5cm"/>
       <!-- footer -->
       <frame id="calc_label"          x1="14.000cm"  y1="1.800cm"    width="6.0cm"  height="3.5cm"/>
-      <frame id="logo"                x1="1.800cm"   y1="21.900cm"   width="200.0"  height="182.0"/> <!-- Real image size -->
     </pageTemplate>
   </template>
   <stylesheet>
@@ -198,7 +198,7 @@
               <td>Importe</td>
             </tr>
             <tr>[[ repeatIn(o.invoice_line,'l','tr') ]]
-              <td><para><b>[[ l.name ]]</b></para><para>[[ l.note ]]</para></td>
+              <td><para><b>[[ l.name ]]</b></para><!--para>[[ l.note ]]</para--></td>
               <td>[[ formatLang(l.quantity) ]]</td>
               <td>[[ l.uos_id.name ]]</td>
              <td><para>$ [[ formatLang(l.price_unit_not_vat_included) ]]
@@ -220,7 +220,7 @@
               <td> </td>
             </tr>
             <tr>[[ repeatIn(o.invoice_line,'l','tr') ]]
-              <td><para><b>[[ l.name ]]</b></para><para>[[ l.note ]]</para></td>
+              <td><para><b>[[ l.name ]]</b></para><!--para>[[ l.note ]]</para--></td>
               <td>[[ formatLang(l.quantity) ]]</td>
               <td>[[ l.uos_id.name ]]</td>
              <td><para>$ [[ formatLang(l.price_unit_not_vat_included) ]]
@@ -249,6 +249,5 @@
         <td>$ [[ formatLang(o.amount_total) ]]</td>
       </tr>
     </blockTable>
-    <para>[[ use_header and company.logo and setTag('para','image', {'width':'67.0','height':'61.0'}) ]][[ (use_header) and company.logo ]] <!-- Report image size --></para>
   </story>
 </document>
