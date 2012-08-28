@@ -23,7 +23,7 @@ from osv import fields, osv
 import decimal_precision as dp
 
 _all_taxes = lambda x: True
-_all_except_vat = lambda x: x.name not in ['IVA Ventas 21%', 'IVA Compras 21%']
+_all_except_vat = lambda x: 'IVA' not in x.name 
 
 class account_invoice_line(osv.osv):
     """
@@ -35,8 +35,13 @@ class account_invoice_line(osv.osv):
         tax_obj = self.pool.get('account.tax')
         cur_obj = self.pool.get('res.currency')
         for line in self.browse(cr, uid, ids):
-            price = line.price_unit * (1-(line.discount or 0.0)/100.0)
             tax_ids = filter(tax_filter, line.invoice_line_tax_id)
+            price_unit = line.price_unit
+            for tax in line.invoice_line_tax_id:
+                if tax.price_include and tax not in tax_ids:
+                    price_unit = line.price_subtotal
+                    break
+            price = price_unit * (1-(line.discount or 0.0)/100.0)
             quantity = default_quantity if default_quantity is not None else line.quantity
             taxes = tax_obj.compute_all(cr, uid,
                                         tax_ids, price, quantity,
