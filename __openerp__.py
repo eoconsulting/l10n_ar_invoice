@@ -24,7 +24,7 @@
 
 {
     'name': 'Argentina - Generador de Talonarios',
-    'version': '2.0',
+    'version': '3.0',
     'author': 'Moldeo Interactive / Enterprise Objects Consulting',
     'category': 'Argentina/Invoices',
     'website': 'http://www.eoconsulting.com.ar/',
@@ -37,6 +37,7 @@ Generador de Talonarios para la Argentina.
 """,
     'depends': [
         'l10n_chart_ar_generic',
+        'sale',
     ],
     'init_xml': [],
     'demo_xml': [],

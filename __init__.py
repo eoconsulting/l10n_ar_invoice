@@ -20,6 +20,7 @@
 
 import installer
 import invoice
+import sale
 import company
 import report
 

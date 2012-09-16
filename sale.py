@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2004-2010 Moldeo Interactive
-#    (<http://www.moldeointeractive.com.ar>).
+#    Author: Mariano Ruiz <mrsarm@gmail.com>,
+#            Enterprise Objects Consulting (<http://www.eoconsulting.com.ar>)
+#    Created: 2012-09-13
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -25,7 +26,7 @@ import decimal_precision as dp
 _all_taxes = lambda x: True
 _all_except_vat = lambda x: 'IVA' not in x.name
 
-class account_invoice_line(osv.osv):
+class sale_order_line(osv.osv):
     """
     En argentina como no se diferencian los impuestos en las facturas, excepto el IVA
     agrego funciones que ignoran el iva solamenta a la hora de imprimir los valores.
@@ -33,25 +34,21 @@ class account_invoice_line(osv.osv):
     def _amount_calc_taxes(self, cr, uid, ids, tax_filter, default_quantity):
         res = {}
         tax_obj = self.pool.get('account.tax')
-        cur_obj = self.pool.get('res.currency')
         for line in self.browse(cr, uid, ids):
-            tax_ids = filter(tax_filter, line.invoice_line_tax_id)
+            tax_ids = filter(tax_filter, line.tax_id)
             price_unit = line.price_unit
-            for tax in line.invoice_line_tax_id:
+            for tax in line.tax_id:
                 if tax.price_include and tax not in tax_ids:
                     price_unit = line.price_subtotal
                     break
             price = price_unit * (1-(line.discount or 0.0)/100.0)
-            quantity = default_quantity if default_quantity is not None else line.quantity
+            quantity = default_quantity if default_quantity is not None else line.product_uom_qty
             taxes = tax_obj.compute_all(cr, uid,
                                         tax_ids, price, quantity,
                                         product=line.product_id,
-                                        address_id=line.invoice_id.address_invoice_id,
-                                        partner=line.invoice_id.partner_id)
+                                        address_id=line.order_id.partner_invoice_id,
+                                        partner=line.order_id.partner_id)
             res[line.id] = taxes['total_included']
-            if line.invoice_id:
-                cur = line.invoice_id.currency_id
-                res[line.id] = cur_obj.round(cr, uid, cur, res[line.id])
         return res
 
     def _amount_unit_vat_included(self, cr, uid, ids, prop, unknow_none, unknow_dict):
@@ -66,7 +63,7 @@ class account_invoice_line(osv.osv):
     def _amount_subtotal_not_vat_included(self, cr, uid, ids, prop, unknow_none, unknow_dict):
         return self._amount_calc_taxes(cr, uid, ids, _all_except_vat, None)
 
-    _inherit = 'account.invoice.line'
+    _inherit = 'sale.order.line'
     _columns = {
         'price_unit_vat_included': fields.function(_amount_unit_vat_included, method=True,
                                                string='Unit Price with VAT', type="float",
@@ -82,8 +79,7 @@ class account_invoice_line(osv.osv):
                                                digits_compute= dp.get_precision('Account'), store=False),
     }
 
-account_invoice_line()
+sale_order_line()
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-

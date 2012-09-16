@@ -5,6 +5,7 @@ Generador de Talonarios para la Argentina.
 
  * Permite generar talonarios para comprobanetes según requerimientos de la AFIP.
  * Reporte "Factura" adaptado a los estilos de Argentina, con y sin encabezado y leyendas.
+ * IVA descriminado en el importe si es factura A.
 
 Autores:
 
