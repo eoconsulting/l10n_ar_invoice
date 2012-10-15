@@ -182,7 +182,7 @@
       <nextFrame/>
       <para style='body-bold'>[[ (use_header) and 'Condición de Venta:' or '' ]]</para>
       <nextFrame/>
-      <para style='body'>[[ o.payment_term.name or 'Sin definir' ]]</para>
+      <para style='body'>[[ o.payment_term.name or o.payment_type.name ]]</para>
       <nextFrame/>
       <para style='body-bold'>[[ (use_header) and 'Remito Nº:' or '' ]]</para>
       <nextFrame/>
