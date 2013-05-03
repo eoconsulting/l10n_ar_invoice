@@ -39,31 +39,32 @@ class account_invoice_line(osv.osv):
             price_unit = line.price_unit
             for tax in line.invoice_line_tax_id:
                 if tax.price_include and tax not in tax_ids:
-                    price_unit = line.price_subtotal
+                    q = line.quantity if line.quantity>0 else 1.0
+                    price_unit = line.price_subtotal / q
                     break
             price = price_unit * (1-(line.discount or 0.0)/100.0)
             quantity = default_quantity if default_quantity is not None else line.quantity
             taxes = tax_obj.compute_all(cr, uid,
                                         tax_ids, price, quantity,
-                                        product=line.product_id,
-                                        address_id=line.invoice_id.address_invoice_id,
-                                        partner=line.invoice_id.partner_id)
+                                        line.invoice_id.address_invoice_id,
+                                        line.product_id,
+                                        line.invoice_id.partner_id)
             res[line.id] = taxes['total_included']
             if line.invoice_id:
                 cur = line.invoice_id.currency_id
                 res[line.id] = cur_obj.round(cr, uid, cur, res[line.id])
         return res
 
-    def _amount_unit_vat_included(self, cr, uid, ids, prop, unknow_none, unknow_dict):
+    def _amount_unit_vat_included(self, cr, uid, ids, field_name, arg, context):
         return self._amount_calc_taxes(cr, uid, ids, _all_taxes, 1)
 
-    def _amount_subtotal_vat_included(self, cr, uid, ids, prop, unknow_none, unknow_dict):
+    def _amount_subtotal_vat_included(self, cr, uid, ids, field_name, arg, context):
         return self._amount_calc_taxes(cr, uid, ids, _all_taxes, None)
 
-    def _amount_unit_not_vat_included(self, cr, uid, ids, prop, unknow_none, unknow_dict):
+    def _amount_unit_not_vat_included(self, cr, uid, ids, field_name, arg, context):
         return self._amount_calc_taxes(cr, uid, ids, _all_except_vat, 1)
 
-    def _amount_subtotal_not_vat_included(self, cr, uid, ids, prop, unknow_none, unknow_dict):
+    def _amount_subtotal_not_vat_included(self, cr, uid, ids, field_name, arg, context):
         return self._amount_calc_taxes(cr, uid, ids, _all_except_vat, None)
 
     _inherit = 'account.invoice.line'
