@@ -97,6 +97,11 @@
           fontName='Helvetica'
           fontSize='9'
           />
+      <paraStyle name='notes'
+          fontName='Helvetica'
+          fontSize='7'
+          leftIndent='0.4cm'
+          />
       <blockTableStyle id="Details">
         <blockValign value="TOP" start="0,0" stop="0,-1"/>
         <blockValign value="TOP" start="1,0" stop="1,-1"/>
@@ -197,7 +202,10 @@
               <td>Importe</td>
             </tr>
             <tr>[[ repeatIn(o.invoice_line,'l','tr') ]]
-              <td><para><b>[[ l.name ]]</b></para><!--para>[[ l.note ]]</para--></td>
+              <td>
+                <para>[[ l.name ]]</para>
+                <para style="notes">[[ l.note ]]</para>
+              </td>
               <td>[[ formatLang(l.quantity) ]]</td>
               <td>[[ l.uos_id.name ]]</td>
              <td><para>$ [[ formatLang(l.price_unit_not_vat_included) ]]
@@ -219,7 +227,10 @@
               <td> </td>
             </tr>
             <tr>[[ repeatIn(o.invoice_line,'l','tr') ]]
-              <td><para><b>[[ l.name ]]</b></para><!--para>[[ l.note ]]</para--></td>
+              <td>
+                <para>[[ l.name ]]</para>
+                <para style="notes">[[ l.note ]]</para>
+              </td>
               <td>[[ formatLang(l.quantity) ]]</td>
               <td>[[ l.uos_id.name ]]</td>
              <td><para>$ [[ formatLang(l.price_unit_not_vat_included) ]]
