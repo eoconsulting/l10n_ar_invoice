@@ -8,7 +8,7 @@
 			model="account.invoice"
 			name="ar.account.invoice"
 			rml="l10n_ar_invoice/report/invoice.rml"
-			string="Invoice"
+			string="Invoice without Header"
 			header="False"
 			attachment="(object.state in ('open','paid')) and ('FC'+(object.number or '').replace('/',''))"
 			attachment_use="0"/>
@@ -19,7 +19,7 @@
 			model="account.invoice"
 			name="ar.account.invoice.with.header"
 			rml="l10n_ar_invoice/report/invoice.rml"
-			string="Invoices with Header"
+			string="Invoice with Header"
 			header="False"
 			attachment="(object.state in ('open','paid')) and ('FC_BORRADOR'+(object.number or '').replace('/',''))"
 			attachment_use="0"/>

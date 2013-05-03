@@ -1499,8 +1499,13 @@ msgstr "Inicio de Actividades"
 
 #. module: l10n_ar_invoice
 #: model:ir.actions.report.xml,name:account.account_invoices_with_header
-msgid "Invoices with Header"
+msgid "Invoice with Header"
 msgstr "Factura con Encabezado"
+
+#. module: l10n_ar_invoice
+#: model:ir.actions.report.xml,name:account.account_invoices
+msgid "Invoice without Header"
+msgstr "Factura sin Encabezado"
 
 #. module: account
 #: model:process.node,note:account.process_node_analytic0
