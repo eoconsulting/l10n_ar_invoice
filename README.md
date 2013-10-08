@@ -1,6 +1,8 @@
 Módulo OpenERP localización de facturas en Argentina
 ====================================================
 
+**This project has been moved to https://launchpad.net/~eoc**
+
 Generador de Talonarios para la Argentina.
 
  * Permite generar talonarios para comprobanetes según requerimientos de la AFIP.
